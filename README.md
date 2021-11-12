@@ -22,6 +22,7 @@
   [View video of Budget Tracker usage here.](https://watch.screencastify.com/v/ye2NoH0CUMkmJWqZ0W8a)
 
   ![Budget Tracker home page.](./public/images/Budget.png)
+  ![How to switch PWA to offline and continue to use app.](./public/images/Offline.png)
 
 
   ## License
