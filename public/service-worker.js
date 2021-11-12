@@ -1,3 +1,4 @@
+//create array of files to be cached
 const filesToCache = [
     '/',
     '/index.html',
@@ -15,6 +16,7 @@ const filesToCache = [
 const CACHE_NAME = 'my-site-cache-v1'
 const DATA_CACHE_NAME = "data-cache-v1"; 
 
+//install event to open cache with previous const declared
 self.addEventListener("install", function(evt) {
     evt.waitUntil(
       caches.open(CACHE_NAME).then(cache => {
@@ -26,6 +28,7 @@ self.addEventListener("install", function(evt) {
     self.skipWaiting();
   });
 
+//activate event to remove any old cache data not called for
   self.addEventListener("activate", function(evt) {
     evt.waitUntil(
       caches.keys().then(keyList => {
@@ -50,7 +53,7 @@ self.addEventListener("install", function(evt) {
         caches.open(DATA_CACHE_NAME).then(cache => {
           return fetch(evt.request)
             .then(response => {
-              // If the response was good, clone it and store it in the cache.
+              // if the response was good, clone it and store it in the cache.
               if (response.status === 200) {
                 cache.put(evt.request.url, response.clone());
               }
@@ -58,7 +61,7 @@ self.addEventListener("install", function(evt) {
               return response;
             })
             .catch(err => {
-              // Network request failed, try to get it from the cache.
+              //offline meaning network fetch will fail so pull stored valued from cache
               return cache.match(evt.request);
             });
         }).catch(err => console.log(err))

@@ -44,8 +44,10 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <!--Link indexeddb to html for offline use-->
   <script src="indexeddb.js"></script>
   <script src="index.js"></script>
+  <!--script to register the service worker js file-->
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
